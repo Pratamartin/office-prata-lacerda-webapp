@@ -2,3 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Mudar a cor das setas do Swiper */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #9454ad !important;
+}
+
+/* Opcional: Aumentar o tamanho das setas */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 24px !important; /* Ajuste conforme necessário */
+}
+
+/* Mudar a cor dos bullets da paginação */
+.swiper-pagination-bullet {
+    background-color: #cbd5e1 !important; 
+    opacity: 0.5;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+  }
+  
+  /* Mudar a cor do bullet ativo */
+  .swiper-pagination-bullet-active {
+    background-color: #9454ad !important; 
+    opacity: 1;
+  }
