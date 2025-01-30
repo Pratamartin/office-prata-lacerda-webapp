@@ -8,9 +8,20 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+      colors:{
+        'white-primary' : '#FFFFFF',
+        'green-actived': '#327A4F',
+        'purple' : '#9454ad',
+        'purple-overlay': '#9454ad',
+      },
+      maxWidth: {
+        grid: '77.5rem'
+      },
+      height : {
+        'section-hero' : '54.625rem'
+      },
+      textColor: {
+        'purple' : '#9454ad',
       },
     },
   },
