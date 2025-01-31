@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import LogoImg from '/public/logo_melhor.png';
 import { FiMenu, FiX } from "react-icons/fi";
 import { GridContainer } from "../grid";
@@ -16,7 +16,18 @@ const arrayMenu = [
 
 export function Header() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const [isMobile, setIsMobile] = useState(false);
 	const activedStyle = 'bg-gray-200 text-opacity-100 rounded-full';
+
+	useEffect(() => {
+		const checkScreenSize = () => {
+			setIsMobile(window.innerWidth < 1024);
+		};
+
+		checkScreenSize();
+		window.addEventListener("resize", checkScreenSize);
+		return () => window.removeEventListener("resize", checkScreenSize);
+	}, []);
 
 	return (
 		<header className="relative w-full h-24 bg-white flex items-center shadow-md">
@@ -29,7 +40,7 @@ export function Header() {
 						{isMenuOpen ? <FiX size={24} color="#9454ad" /> : <FiMenu size={24} color="#9454ad" />}
 					</button>
 				</div>
-				<div className="flex items-center justify-center flex-grow">
+				<div className={`flex items-center flex-grow transition-all ${isMobile ? 'justify-center' : 'justify-start'}`}>
 					<Image 
 						src={LogoImg} 
 						alt="logo" 

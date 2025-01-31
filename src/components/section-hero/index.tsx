@@ -1,3 +1,6 @@
+'use client'
+
+import { useState, useEffect } from "react";
 import { GridContainer } from "../grid";
 import { Carousel } from "../carousel";
 
@@ -8,15 +11,27 @@ const images = [
 ];
 
 export function SectionPhotos() {
+	const [isMobile, setIsMobile] = useState(false);
+
+	useEffect(() => {
+		const checkScreenSize = () => {
+			setIsMobile(window.innerWidth < 768);
+		};
+
+		checkScreenSize();
+		window.addEventListener("resize", checkScreenSize);
+		return () => window.removeEventListener("resize", checkScreenSize);
+	}, []);
+
 	return (
-		<section
-			className="w-full bg-white bg-cover bg-center text-black border-t border-t-gray-200 py-12"
-		>
+		<section className="w-full bg-white bg-cover bg-center text-black border-t border-t-gray-200 py-12">
 			<GridContainer>
-				<div className="flex flex-col md:flex-row items-center gap-8 max-w-5xl mx-auto">
-					<div className="flex flex-col text-center md:text-left max-w-lg">
-						<p className="text-2xl font-medium  text-purple mb-4">Escritório de Advocacia</p>
-						<h1 className="md:leading-[72px] py-2 md:text-6xl text-5xl font-semibold'">
+				<div className={`flex ${isMobile ? 'flex-col items-center text-center' : 'flex-row text-left'} gap-8 max-w-6xl mx-auto`}>
+					<div className="flex flex-col max-w-lg">
+						<p className="text-2xl font-medium text-purple mb-4">
+							Escritório de Advocacia
+						</p>
+						<h1 className="md:leading-[72px] py-2 md:text-6xl text-5xl font-semibold">
 							Assistência jurídica personalizada e profissional
 						</h1>
 						<p className="text-lg text-gray-600">
@@ -30,3 +45,4 @@ export function SectionPhotos() {
 		</section>
 	);
 }
+
