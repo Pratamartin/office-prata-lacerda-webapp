@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { GridContainer } from "../grid";
 import { Carousel } from "../carousel";
+import { FaWhatsapp } from "react-icons/fa";
 
 const images = [
 	{ src: "/founders.jpg", alt: "founders" },
@@ -31,13 +32,24 @@ export function SectionPhotos() {
 						<p className="text-2xl font-medium text-purple mb-4">
 							Escritório de Advocacia
 						</p>
-						<h1 className="md:leading-[72px] py-2 md:text-6xl text-5xl font-semibold">
+						<h1 className="md:leading-[72px] py-2 md:text-5xl text-5xl font-semibold">
 							Assistência jurídica personalizada e profissional
 						</h1>
 						<p className="text-lg text-gray-600">
 							Somos uma equipe de advogadas especialistas no atendimento direcionado às demandas de nossos clientes,
 							buscando as melhores soluções no menor espaço de tempo e com o melhor custo-benefício.
 						</p>
+						<div className="mt-6 flex justify-center md:justify-start">
+							<a 
+								href="https://wa.me/+5592986176350"
+								target="_blank"
+								rel="noopener noreferrer"
+								className="flex items-center justify-center gap-2 bg-purple text-white w-full md:w-auto px-6 py-3 rounded-md text-lg font-bold text-center"
+							>
+								<FaWhatsapp className="text-xl" />
+								Fale Conosco
+							</a>
+						</div>
 					</div>
 					<Carousel images={images} />
 				</div>
@@ -45,4 +57,3 @@ export function SectionPhotos() {
 		</section>
 	);
 }
-
