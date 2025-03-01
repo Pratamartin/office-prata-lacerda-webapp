@@ -28,6 +28,7 @@ export function Footer() {
         <div>
           <h3 className="text-xl font-semibold mb-4">Links Rápidos</h3>
           <ul>
+            <li><a href="#" className="hover:text-gray-300">Início</a></li>
             <li><a href="#" className="hover:text-gray-300">Sobre Nós</a></li>
             <li><a href="#" className="hover:text-gray-300">Áreas de Atuação</a></li>
             <li><a href="#" className="hover:text-gray-300">Contato</a></li>

@@ -7,11 +7,12 @@ import LogoImg from '/public/logo_melhor.png';
 import { FiMenu, FiX } from "react-icons/fi";
 import { GridContainer } from "../grid";
 
-const arrayMenu = [
-	'Início',
-	'Sobre nós',
-	'Áreas de atuação',
-	'Contato',
+const menuItems = [
+	{ name: 'Início', path: '/' },
+	{ name: 'Sobre nós', path: '/about' },
+	{ name: 'Áreas de Atuação', path: '/areas' },
+	{ name: 'Artigos e Publicações', path: '/article' },
+	{ name: 'Contato', path: '/contact' }
 ];
 
 export function Header() {
@@ -41,21 +42,23 @@ export function Header() {
 					</button>
 				</div>
 				<div className={`flex items-center flex-grow transition-all ${isMobile ? 'justify-center' : 'justify-start'}`}>
-					<Image 
-						src={LogoImg} 
-						alt="logo" 
-						className="w-75 h-auto" 
-					/>
+					<Link href="/">
+						<Image 
+							src={LogoImg} 
+							alt="logo" 
+							className="w-75 h-auto" 
+						/>
+					</Link>
 				</div>
 				<div className="hidden lg:flex items-center gap-6">
 					<nav className="flex gap-6">
-						{arrayMenu.map((item, index) => (
+						{menuItems.map((item, index) => (
 							<Link
 								key={index}
-								href="#"
+								href={item.path}
 								className={`px-3 py-1 text-purple text-opacity-40 hover:text-opacity-100 transition-all ${index === 0 ? activedStyle : ''}`}
 							>
-								{item}
+								{item.name}
 							</Link>
 						))}
 					</nav>
@@ -64,13 +67,14 @@ export function Header() {
 			{isMenuOpen && (
 				<div className="lg:hidden absolute top-full left-0 w-full bg-white shadow-md py-4">
 					<nav className="flex flex-col items-center gap-4">
-						{arrayMenu.map((item, index) => (
+						{menuItems.map((item, index) => (
 							<Link
 								key={index}
-								href="#"
+								href={item.path}
 								className="text-purple text-opacity-40 hover:text-opacity-100 transition-all"
+								onClick={() => setIsMenuOpen(false)} // Fecha o menu ao clicar
 							>
-								{item}
+								{item.name}
 							</Link>
 						))}
 					</nav>

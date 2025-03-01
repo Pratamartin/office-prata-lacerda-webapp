@@ -9,6 +9,7 @@ const images = [
 	{ src: "/founders.jpg", alt: "founders" },
 	{ src: "/deb.jpg", alt: "Debora" },
 	{ src: "/lucy.jpg", alt: "Lucimar" },
+	// { src: "/videira.png", alt: "Videira"}
 ];
 
 export function SectionPhotos() {

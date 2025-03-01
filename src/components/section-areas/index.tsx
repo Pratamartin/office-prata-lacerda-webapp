@@ -6,28 +6,28 @@ import { GridContainer } from "../grid";
 const areas = [
   { 
     title: "Contencioso Cível", 
-    details:"Peças Inagurais Inicial e Defesa Audiências e Sustentação Oral | Recursos em tribunais de 2ª instância e Superiores." 
+    details:"Contencioso cível é a resolução judicial de conflitos em questões não criminais." 
   },
   { 
     title: "Direito Médico", 
-    details: "Atendimento preventivo para consultórios, clínicas e profissionais autônomos."
+    details: "Direito médico regula a relação entre profissionais de saúde, pacientes e instituições, abrangendo responsabilidade civil, ética e normas da área."
   },
   { 
     title: "Regularização de Imóveis", 
-    details: " Consultoria Jurídica | Usucapião | Adjudicação Compulsória | Procedimento extrajudicial." 
+    details: "Regularização de imóveis é o processo legal para adequar um imóvel às normas urbanísticas e registrais, garantindo sua propriedade e uso correto." 
   },
   {
     title: "Responsabilidade Civil",
-    details: "Acidentes e doenças do trabalho | Erro médico | Violência contra mulher | Racismo."
+    details: "Responsabilidade civil é a obrigação de reparar danos causados a terceiros por ato ilícito ou negligência."
 
   },
   { 
     title: "Direito Ambiental", 
-    details: "Defesas administrativas ambientais | Defesas judiciais ambientais | Compliance ambiental para empresas." 
+    details: "Direito ambiental é o ramo jurídico que regula a proteção, uso e conservação do meio ambiente." 
   },
   {
     title: "Consultaria e Compliance",
-    details: "Consultoria em projetos de diversidade | Treinamentos | Compliance em questão de gênero, sexualidade e racial."  
+    details: "Consultoria e compliance envolvem a orientação e implementação de normas para garantir que empresas sigam leis e regulamentos, prevenindo riscos e irregularidades."  
   }
 ];
 
