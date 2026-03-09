@@ -1,12 +1,18 @@
 'use client';
 
-import { useState } from 'react';
 import { Download, Link as LinkIcon } from 'lucide-react';
 
-const articles = [
-  { title: "Direito Previdenciário - Guia Completo", link: "/pdfs/direito-previdenciario.pdf", type: "pdf" },
-  { title: "Justiça Ambiental e Direitos Fundamentais", link: "/pdfs/justica-ambiental.pdf", type: "pdf" },
-  { title: "Reforma Trabalhista e seus Impactos", link: "https://exemplo.com/reforma-trabalhista", type: "link" },
+type Article = {
+  title: string;
+  link: string;
+  type: "pdf" | "link";
+  available?: boolean;
+};
+
+const articles: Article[] = [
+  { title: "Direito Previdenciário - Guia Completo", link: "/pdfs/direito-previdenciario.pdf", type: "pdf", available: false },
+  { title: "Justiça Ambiental e Direitos Fundamentais", link: "/pdfs/justica-ambiental.pdf", type: "pdf", available: false },
+  { title: "Reforma Trabalhista e seus Impactos", link: "https://exemplo.com/reforma-trabalhista", type: "link", available: true },
 ];
 
 export default function ArticlesPage() {
@@ -26,16 +32,23 @@ export default function ArticlesPage() {
         {articles.map((article, index) => (
           <div key={index} className="flex items-center justify-between bg-gray-100 p-4 rounded-xl mb-4 shadow-sm">
             <span className="text-lg font-medium text-gray-800">{article.title}</span>
-            <a
-              href={article.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-purple hover:text-purple-700"
-              download={article.type === "pdf"}
-            >
-              {article.type === "pdf" ? <Download size={20} /> : <LinkIcon size={20} />}
-              {article.type === "pdf" ? "Baixar PDF" : "Acessar"}
-            </a>
+            {article.available === false ? (
+              <span className="flex items-center gap-2 text-gray-500 cursor-not-allowed" aria-disabled="true">
+                <Download size={20} />
+                Em breve
+              </span>
+            ) : (
+              <a
+                href={article.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-purple hover:text-purple-700"
+                download={article.type === "pdf"}
+              >
+                {article.type === "pdf" ? <Download size={20} /> : <LinkIcon size={20} />}
+                {article.type === "pdf" ? "Baixar PDF" : "Acessar"}
+              </a>
+            )}
           </div>
         ))}
       </div>
