@@ -5,8 +5,9 @@ export async function POST(req: Request) {
   try {
     const emailUser = process.env.EMAIL_USER;
     const emailPass = process.env.EMAIL_PASS;
+    const emailTo = process.env.CONTACT_TO_EMAIL;
 
-    if (!emailUser || !emailPass) {
+    if (!emailUser || !emailPass || !emailTo) {
       return NextResponse.json(
         { success: false, message: "Configuração de e-mail ausente no servidor" },
         { status: 500 }
@@ -33,7 +34,7 @@ export async function POST(req: Request) {
     await transporter.sendMail({
       from: `Site Prata, Lacerda & Videira <${emailUser}>`,
       replyTo: email,
-      to: "prataelacerdaadv@gmail.com", 
+      to: emailTo,
       subject: "Nova mensagem do site",
       text: `Nome do cliente: ${nome}\nE-mail do cliente: ${email}\nTelefone do cliente: ${telefone}\n\nMensagem do cliente:\n${mensagem}`,
     });

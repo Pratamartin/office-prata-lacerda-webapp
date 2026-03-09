@@ -49,6 +49,13 @@ Crie um arquivo `.env.local` na raiz do projeto:
 ```env
 EMAIL_USER=seu-email@gmail.com
 EMAIL_PASS=sua-senha-de-app
+CONTACT_TO_EMAIL=contato@seudominio.com
+```
+
+Você também pode copiar de `.env.example`:
+
+```bash
+cp .env.example .env.local
 ```
 
 ### Observações importantes
@@ -79,7 +86,7 @@ npm run start    # Inicia versão de produção
 
 ### Checklist recomendado
 
-1. Configurar `EMAIL_USER` e `EMAIL_PASS` no provedor (Vercel/servidor).
+1. Configurar `EMAIL_USER`, `EMAIL_PASS` e `CONTACT_TO_EMAIL` no provedor (Vercel/servidor).
 2. Rodar validações locais:
 
 ```bash
