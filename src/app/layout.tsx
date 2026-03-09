@@ -10,7 +10,7 @@ const camaufalge = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "prata-larcerda-videira",
+  title: "Prata, Lacerda & Videira",
   description: "Projeto criado para um escritório",
 };
 
@@ -20,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <body
         className={ `${camaufalge.className} antialiased` }
       >
