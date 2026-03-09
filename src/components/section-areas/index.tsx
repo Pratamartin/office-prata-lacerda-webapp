@@ -52,6 +52,9 @@ export function SectionAreas() {
             <p className="text-lg text-gray-600">
               Oferecemos assistência jurídica especializada em diversas áreas, garantindo suporte personalizado e eficiente.
             </p>
+            <p className="text-sm text-gray-500 mt-2">
+              Clique em uma área para ver os detalhes.
+            </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 w-full">
