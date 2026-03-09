@@ -62,6 +62,8 @@ cp .env.example .env.local
 
 - O endpoint de contato usa Gmail via Nodemailer.
 - Para contas Gmail, use senha de app (não use senha comum da conta).
+- O backend valida formato de e-mail antes de enviar.
+- O endpoint possui rate limit básico por IP (retorno HTTP 429 em excesso de tentativas).
 - Sem essas variáveis, a API `/api/contact` retorna erro 500 por configuração ausente.
 
 ## Scripts
@@ -111,6 +113,13 @@ npm audit --omit=dev
   "mensagem": "Mensagem"
 }
 ```
+
+### Respostas comuns
+
+- `200`: e-mail enviado com sucesso.
+- `400`: payload inválido ou e-mail inválido.
+- `429`: muitas tentativas no mesmo IP em pouco tempo.
+- `500`: erro interno ou configuração ausente de ambiente.
 
 ## Licença
 
