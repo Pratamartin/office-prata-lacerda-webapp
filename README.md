@@ -1,27 +1,27 @@
 # Prata, Lacerda & Videira WebApp
 
-Aplicação institucional desenvolvida com Next.js para o escritório Prata, Lacerda & Videira Advogadas.
+Institutional web application built with Next.js for the law firm Prata, Lacerda & Videira Advogadas.
 
-## Tecnologias
+## Technologies
 
 - Next.js 15 (App Router)
 - React 18
 - TypeScript
 - Tailwind CSS
-- Nodemailer (envio de formulário de contato)
+- Nodemailer (contact form email delivery)
 
-## Estrutura principal
+## Main Structure
 
 ```text
 src/
   app/
-    api/contact/route.ts      # Endpoint de contato
-    layout.tsx                # Layout global e metadados
+    api/contact/route.ts      # Contact endpoint
+    layout.tsx                # Global layout and metadata
     page.tsx                  # Home
-    about/page.tsx            # Sobre
-    areas/page.tsx            # Áreas de atuação
-    article/page.tsx          # Artigos e publicações
-    contact/page.tsx          # Página de contato
+    about/page.tsx            # About
+    areas/page.tsx            # Practice areas
+    article/page.tsx          # Articles and publications
+    contact/page.tsx          # Contact page
   components/
     header/
     footer/
@@ -31,51 +31,51 @@ src/
     section-contact/
 ```
 
-## Pré-requisitos
+## Prerequisites
 
 - Node.js 20+
 - npm 10+
 
-## Instalação
+## Installation
 
 ```bash
 npm install
 ```
 
-## Variáveis de ambiente
+## Environment Variables
 
-Crie um arquivo `.env.local` na raiz do projeto:
+Create a `.env.local` file at the project root:
 
 ```env
-EMAIL_USER=seu-email@gmail.com
-EMAIL_PASS=sua-senha-de-app
-CONTACT_TO_EMAIL=contato@seudominio.com
+EMAIL_USER=your-email@gmail.com
+EMAIL_PASS=your-app-password
+CONTACT_TO_EMAIL=contact@yourdomain.com
 ```
 
-Você também pode copiar de `.env.example`:
+You can also copy from `.env.example`:
 
 ```bash
 cp .env.example .env.local
 ```
 
-### Observações importantes
+### Important Notes
 
-- O endpoint de contato usa Gmail via Nodemailer.
-- Para contas Gmail, use senha de app (não use senha comum da conta).
-- O backend valida formato de e-mail antes de enviar.
-- O endpoint possui rate limit básico por IP (retorno HTTP 429 em excesso de tentativas).
-- Sem essas variáveis, a API `/api/contact` retorna erro 500 por configuração ausente.
+- The contact endpoint uses Gmail through Nodemailer.
+- For Gmail accounts, use an app password (do not use your regular account password).
+- The backend validates email format before sending.
+- The endpoint has a basic per-IP rate limit (returns HTTP 429 on excessive attempts).
+- Without these variables, the `/api/contact` API returns HTTP 500 due to missing configuration.
 
 ## Scripts
 
 ```bash
-npm run dev      # Ambiente de desenvolvimento
+npm run dev      # Development environment
 npm run lint     # Lint
-npm run build    # Build de produção
-npm run start    # Inicia versão de produção
+npm run build    # Production build
+npm run start    # Start production server
 ```
 
-## Rotas
+## Routes
 
 - /
 - /about
@@ -86,10 +86,10 @@ npm run start    # Inicia versão de produção
 
 ## Deploy
 
-### Checklist recomendado
+### Recommended Checklist
 
-1. Configurar `EMAIL_USER`, `EMAIL_PASS` e `CONTACT_TO_EMAIL` no provedor (Vercel/servidor).
-2. Rodar validações locais:
+1. Configure `EMAIL_USER`, `EMAIL_PASS`, and `CONTACT_TO_EMAIL` in your provider (Vercel/server).
+2. Run local validations:
 
 ```bash
 npm run lint
@@ -97,31 +97,31 @@ npm run build
 npm audit --omit=dev
 ```
 
-3. Garantir que links e arquivos estáticos em `public/` estejam corretos.
+3. Make sure links and static files in `public/` are correct.
 
-## Endpoint de contato
+## Contact Endpoint
 
-- Método: `POST`
-- Rota: `/api/contact`
-- Body JSON esperado:
+- Method: `POST`
+- Route: `/api/contact`
+- Expected JSON body:
 
 ```json
 {
-  "nome": "Nome",
+  "nome": "Name",
   "email": "email@dominio.com",
   "telefone": "(92) 99999-9999",
-  "areaAtuacao": "Direito Ambiental",
-  "mensagem": "Mensagem"
+  "areaAtuacao": "Environmental Law",
+  "mensagem": "Message"
 }
 ```
 
-### Respostas comuns
+### Common Responses
 
-- `200`: e-mail enviado com sucesso.
-- `400`: payload inválido ou e-mail inválido.
-- `429`: muitas tentativas no mesmo IP em pouco tempo.
-- `500`: erro interno ou configuração ausente de ambiente.
+- `200`: email sent successfully.
+- `400`: invalid payload or invalid email.
+- `429`: too many attempts from the same IP in a short period.
+- `500`: internal error or missing environment configuration.
 
-## Licença
+## License
 
-Uso interno do projeto.
+All rights reserved to https://www.linkedin.com/in/martinho-prata/
