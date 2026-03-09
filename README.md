@@ -110,6 +110,7 @@ npm audit --omit=dev
   "nome": "Nome",
   "email": "email@dominio.com",
   "telefone": "(92) 99999-9999",
+  "areaAtuacao": "Direito Ambiental",
   "mensagem": "Mensagem"
 }
 ```
