@@ -6,12 +6,13 @@ const ContactSection: React.FC = () => {
     nome: "",
     email: "",
     telefone: "",
+    areaAtuacao: "",
     mensagem: "",
   });
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
@@ -68,6 +69,23 @@ const ContactSection: React.FC = () => {
             required
           />
         </div>
+        <select
+          name="areaAtuacao"
+          value={form.areaAtuacao}
+          onChange={handleChange}
+          className="w-full bg-white text-black p-3 rounded-md border border-gray-700 focus:outline-none mt-4"
+          required
+        >
+          <option value="" disabled>
+            Selecione a área de atuação
+          </option>
+          <option value="Contencioso Cível">Contencioso Cível</option>
+          <option value="Direito Médico">Direito Médico</option>
+          <option value="Regularização de Imóveis">Regularização de Imóveis</option>
+          <option value="Responsabilidade Civil">Responsabilidade Civil</option>
+          <option value="Direito Ambiental">Direito Ambiental</option>
+          <option value="Consultoria e Compliance">Consultoria e Compliance</option>
+        </select>
         <textarea
           name="mensagem"
           placeholder="Ex.: Gostaria de orientação sobre aposentadoria e agendar uma consulta."

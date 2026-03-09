@@ -70,9 +70,9 @@ export async function POST(req: Request) {
       );
     }
 
-    const { nome, email, telefone, mensagem } = await req.json();
+    const { nome, email, telefone, areaAtuacao, mensagem } = await req.json();
 
-    if (!nome || !email || !telefone || !mensagem) {
+    if (!nome || !email || !telefone || !areaAtuacao || !mensagem) {
       return NextResponse.json(
         { success: false, message: "Preencha todos os campos obrigatórios" },
         { status: 400 }
@@ -99,7 +99,7 @@ export async function POST(req: Request) {
       replyTo: email,
       to: emailTo,
       subject: "Nova mensagem do site",
-      text: `Nome do cliente: ${nome}\nE-mail do cliente: ${email}\nTelefone do cliente: ${telefone}\n\nMensagem do cliente:\n${mensagem}`,
+      text: `Nome do cliente: ${nome}\nE-mail do cliente: ${email}\nTelefone do cliente: ${telefone}\nÁrea de atuação: ${areaAtuacao}\n\nMensagem do cliente:\n${mensagem}`,
     });
 
     return NextResponse.json({ success: true, message: "E-mail enviado com sucesso!" });
