@@ -43,7 +43,7 @@ const ContactSection: React.FC = () => {
           <input
             type="text"
             name="nome"
-            placeholder="Nome"
+            placeholder="Ex.: Maria da Silva"
             value={form.nome}
             onChange={handleChange}
             className="w-full bg-white text-black p-3 rounded-md border border-gray-700 focus:outline-none"
@@ -52,7 +52,7 @@ const ContactSection: React.FC = () => {
           <input
             type="email"
             name="email"
-            placeholder="Email"
+            placeholder="Ex.: maria@email.com"
             value={form.email}
             onChange={handleChange}
             className="w-full bg-white text-black p-3 rounded-md border border-gray-700 focus:outline-none"
@@ -61,7 +61,7 @@ const ContactSection: React.FC = () => {
           <input
             type="tel"
             name="telefone"
-            placeholder="Telefone"
+            placeholder="Ex.: (92) 99999-9999"
             value={form.telefone}
             onChange={handleChange}
             className="w-full bg-white text-black p-3 rounded-md border border-gray-700 focus:outline-none"
@@ -70,7 +70,7 @@ const ContactSection: React.FC = () => {
         </div>
         <textarea
           name="mensagem"
-          placeholder="Mensagem"
+          placeholder="Ex.: Gostaria de orientação sobre aposentadoria e agendar uma consulta."
           value={form.mensagem}
           onChange={handleChange}
           className="w-full bg-white text-black p-3 rounded-md border border-gray-700 focus:outline-none mt-4 h-32"
