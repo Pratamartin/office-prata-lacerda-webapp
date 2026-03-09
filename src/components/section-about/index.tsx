@@ -14,7 +14,7 @@ export function SectionAbout() {
 		},
 		{
 			nome: "Videira",
-			foto: "/videira.png",
+			foto: "/videira.PNG",
 			sobre: "Focado em Direito Criminal, com histórico de casos de alta complexidade."
 		}
 	];
