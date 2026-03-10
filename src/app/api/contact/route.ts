@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import nodemailer from "nodemailer";
 
 const RATE_LIMIT_WINDOW_MS = 60_000;
 const RATE_LIMIT_MAX_REQUESTS = 5;
@@ -59,16 +58,12 @@ export async function POST(req: Request) {
       );
     }
 
-    const emailUser = process.env.EMAIL_USER;
-    const emailPass = process.env.EMAIL_PASS;
+    const brevoApiKey = process.env.BREVO_API_KEY;
+    const brevoFromEmail = process.env.BREVO_FROM_EMAIL;
+    const brevoFromName = process.env.BREVO_FROM_NAME || "Prata, Lacerda & Videira";
     const emailTo = process.env.CONTACT_TO_EMAIL;
-    const resendApiKey = process.env.RESEND_API_KEY;
-    const resendFromEmail = process.env.RESEND_FROM_EMAIL;
 
-    const hasResendConfig = Boolean(resendApiKey && resendFromEmail);
-    const hasSmtpConfig = Boolean(emailUser && emailPass);
-
-    if (!emailTo || (!hasResendConfig && !hasSmtpConfig)) {
+    if (!brevoApiKey || !brevoFromEmail || !emailTo) {
       return NextResponse.json(
         { success: false, message: "Configuração de e-mail ausente no servidor" },
         { status: 500 }
@@ -93,48 +88,27 @@ export async function POST(req: Request) {
 
     const emailText = `Nome do cliente: ${nome}\nE-mail do cliente: ${email}\nTelefone do cliente: ${telefone}\nÁrea de atuação: ${areaAtuacao}\n\nMensagem do cliente:\n${mensagem}`;
 
-    if (hasResendConfig) {
-      const resendResponse = await fetch("https://api.resend.com/emails", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${resendApiKey}`,
+    const brevoResponse = await fetch("https://api.brevo.com/v3/smtp/email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "api-key": brevoApiKey,
+      },
+      body: JSON.stringify({
+        sender: {
+          email: brevoFromEmail,
+          name: brevoFromName,
         },
-        body: JSON.stringify({
-          from: resendFromEmail,
-          to: [emailTo],
-          subject: "Nova mensagem do site",
-          text: emailText,
-          reply_to: email,
-        }),
-      });
-
-      if (!resendResponse.ok) {
-        const resendError = await resendResponse.text();
-        throw new Error(`Resend error: ${resendError}`);
-      }
-    } else {
-      const transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST || "smtp.gmail.com",
-        port: Number(process.env.SMTP_PORT || 587),
-        secure: false,
-        requireTLS: true,
-        auth: {
-          user: emailUser,
-          pass: emailPass,
-        },
-        connectionTimeout: 15000,
-        greetingTimeout: 10000,
-        socketTimeout: 20000,
-      });
-
-      await transporter.sendMail({
-        from: `Site Prata, Lacerda & Videira <${emailUser}>`,
-        replyTo: email,
-        to: emailTo,
+        to: [{ email: emailTo }],
+        replyTo: { email },
         subject: "Nova mensagem do site",
-        text: emailText,
-      });
+        textContent: emailText,
+      }),
+    });
+
+    if (!brevoResponse.ok) {
+      const brevoError = await brevoResponse.text();
+      throw new Error(`Brevo error: ${brevoError}`);
     }
 
     return NextResponse.json({ success: true, message: "E-mail enviado com sucesso!" });
