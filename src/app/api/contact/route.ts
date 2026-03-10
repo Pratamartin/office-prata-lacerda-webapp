@@ -87,11 +87,17 @@ export async function POST(req: Request) {
     }
 
     const transporter = nodemailer.createTransport({
-      service: "gmail",
+      host: process.env.SMTP_HOST || "smtp.gmail.com",
+      port: Number(process.env.SMTP_PORT || 587),
+      secure: false,
+      requireTLS: true,
       auth: {
         user: emailUser,
         pass: emailPass,
       },
+      connectionTimeout: 15000,
+      greetingTimeout: 10000,
+      socketTimeout: 20000,
     });
 
     await transporter.sendMail({
