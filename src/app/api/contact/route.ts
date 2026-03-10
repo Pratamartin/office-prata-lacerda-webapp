@@ -58,14 +58,22 @@ export async function POST(req: Request) {
       );
     }
 
-    const brevoApiKey = process.env.BREVO_API_KEY;
+    const brevoApiKeyRaw = process.env.BREVO_API_KEY;
     const brevoFromEmail = process.env.BREVO_FROM_EMAIL;
     const brevoFromName = process.env.BREVO_FROM_NAME || "Prata, Lacerda & Videira";
     const emailTo = process.env.CONTACT_TO_EMAIL;
+    const brevoApiKey = brevoApiKeyRaw?.trim().replace(/^['"]|['"]$/g, "");
 
     if (!brevoApiKey || !brevoFromEmail || !emailTo) {
       return NextResponse.json(
         { success: false, message: "Configuração de e-mail ausente no servidor" },
+        { status: 500 }
+      );
+    }
+
+    if (!brevoApiKey.startsWith("xkeysib-")) {
+      return NextResponse.json(
+        { success: false, message: "BREVO_API_KEY inválida. Gere uma nova chave no painel da Brevo." },
         { status: 500 }
       );
     }
