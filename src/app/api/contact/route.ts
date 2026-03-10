@@ -62,8 +62,13 @@ export async function POST(req: Request) {
     const emailUser = process.env.EMAIL_USER;
     const emailPass = process.env.EMAIL_PASS;
     const emailTo = process.env.CONTACT_TO_EMAIL;
+    const resendApiKey = process.env.RESEND_API_KEY;
+    const resendFromEmail = process.env.RESEND_FROM_EMAIL;
 
-    if (!emailUser || !emailPass || !emailTo) {
+    const hasResendConfig = Boolean(resendApiKey && resendFromEmail);
+    const hasSmtpConfig = Boolean(emailUser && emailPass);
+
+    if (!emailTo || (!hasResendConfig && !hasSmtpConfig)) {
       return NextResponse.json(
         { success: false, message: "Configuração de e-mail ausente no servidor" },
         { status: 500 }
@@ -86,27 +91,51 @@ export async function POST(req: Request) {
       );
     }
 
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST || "smtp.gmail.com",
-      port: Number(process.env.SMTP_PORT || 587),
-      secure: false,
-      requireTLS: true,
-      auth: {
-        user: emailUser,
-        pass: emailPass,
-      },
-      connectionTimeout: 15000,
-      greetingTimeout: 10000,
-      socketTimeout: 20000,
-    });
+    const emailText = `Nome do cliente: ${nome}\nE-mail do cliente: ${email}\nTelefone do cliente: ${telefone}\nÁrea de atuação: ${areaAtuacao}\n\nMensagem do cliente:\n${mensagem}`;
 
-    await transporter.sendMail({
-      from: `Site Prata, Lacerda & Videira <${emailUser}>`,
-      replyTo: email,
-      to: emailTo,
-      subject: "Nova mensagem do site",
-      text: `Nome do cliente: ${nome}\nE-mail do cliente: ${email}\nTelefone do cliente: ${telefone}\nÁrea de atuação: ${areaAtuacao}\n\nMensagem do cliente:\n${mensagem}`,
-    });
+    if (hasResendConfig) {
+      const resendResponse = await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${resendApiKey}`,
+        },
+        body: JSON.stringify({
+          from: resendFromEmail,
+          to: [emailTo],
+          subject: "Nova mensagem do site",
+          text: emailText,
+          reply_to: email,
+        }),
+      });
+
+      if (!resendResponse.ok) {
+        const resendError = await resendResponse.text();
+        throw new Error(`Resend error: ${resendError}`);
+      }
+    } else {
+      const transporter = nodemailer.createTransport({
+        host: process.env.SMTP_HOST || "smtp.gmail.com",
+        port: Number(process.env.SMTP_PORT || 587),
+        secure: false,
+        requireTLS: true,
+        auth: {
+          user: emailUser,
+          pass: emailPass,
+        },
+        connectionTimeout: 15000,
+        greetingTimeout: 10000,
+        socketTimeout: 20000,
+      });
+
+      await transporter.sendMail({
+        from: `Site Prata, Lacerda & Videira <${emailUser}>`,
+        replyTo: email,
+        to: emailTo,
+        subject: "Nova mensagem do site",
+        text: emailText,
+      });
+    }
 
     return NextResponse.json({ success: true, message: "E-mail enviado com sucesso!" });
   } catch (error) {
