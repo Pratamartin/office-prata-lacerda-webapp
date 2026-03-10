@@ -8,7 +8,7 @@ Institutional web application built with Next.js for the law firm Prata, Lacerda
 - React 18
 - TypeScript
 - Tailwind CSS
-- Nodemailer (contact form email delivery)
+- Brevo API (contact form email delivery)
 
 ## Main Structure
 
@@ -47,8 +47,9 @@ npm install
 Create a `.env.local` file at the project root:
 
 ```env
-EMAIL_USER=your-email@gmail.com
-EMAIL_PASS=your-app-password
+BREVO_API_KEY=your-brevo-api-key
+BREVO_FROM_EMAIL=your-verified-sender@domain.com
+BREVO_FROM_NAME=Prata, Lacerda & Videira
 CONTACT_TO_EMAIL=contact@yourdomain.com
 ```
 
@@ -60,8 +61,8 @@ cp .env.example .env.local
 
 ### Important Notes
 
-- The contact endpoint uses Gmail through Nodemailer.
-- For Gmail accounts, use an app password (do not use your regular account password).
+- The contact endpoint uses Brevo via HTTP API (recommended for Railway and other cloud platforms).
+- `BREVO_FROM_EMAIL` must be a verified sender in Brevo.
 - The backend validates email format before sending.
 - The endpoint has a basic per-IP rate limit (returns HTTP 429 on excessive attempts).
 - Without these variables, the `/api/contact` API returns HTTP 500 due to missing configuration.
@@ -88,7 +89,7 @@ npm run start    # Start production server
 
 ### Recommended Checklist
 
-1. Configure `EMAIL_USER`, `EMAIL_PASS`, and `CONTACT_TO_EMAIL` in your provider (Vercel/server).
+1. Configure `BREVO_API_KEY`, `BREVO_FROM_EMAIL`, `BREVO_FROM_NAME`, and `CONTACT_TO_EMAIL` in your provider (Railway/Vercel/server).
 2. Run local validations:
 
 ```bash
