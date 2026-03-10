@@ -11,7 +11,7 @@ const camaufalge = localFont({
 
 export const metadata: Metadata = {
   title: "Prata, Lacerda & Videira",
-  description: "Projeto criado para um escritório",
+  description: "Escritório de advocacia com atendimento jurídico especializado.",
 };
 
 export default function RootLayout({
