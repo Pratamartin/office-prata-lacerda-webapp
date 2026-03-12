@@ -36,6 +36,9 @@ const ContactSection: React.FC = () => {
     <section className="bg-white bg-cover bg-center border-t border-t-gray py-12 text-purple py-16 px-4">
       <div className="max-w-3xl mx-auto text-center">
         <h2 className="text-4xl font-bold text-black">Fale com a Prata. Lacerda & Videira</h2>
+        <p className="text-gray-600 mt-3">
+          Envie um e-mail com a área de atuação desejada e responderemos você em breve.
+        </p>
         <div className="w-24 h-1 bg-purple mx-auto mt-2"></div>
       </div>
 
