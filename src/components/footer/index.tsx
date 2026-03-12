@@ -9,7 +9,7 @@ export function Footer() {
         <div>
           <h3 className="text-xl font-semibold mb-4">Contatos</h3>
           <p>Email: prataelacerdaadv@gmail.com</p>
-          <p>Telefone: (92) 98617-6350</p>
+          <p>Telefone: (92) 98402-2031</p>
         </div>
         <div>
           <h3 className="text-xl font-semibold mb-4">Redes Sociais</h3>
@@ -20,7 +20,7 @@ export function Footer() {
             <a href="https://www.linkedin.com/in/prata-e-lacerda-advogadas-3a0582266/" className="text-purple text-2xl hover:text-gray-300">
               <FaLinkedin />
             </a>
-            <a href="https://wa.me/+5592986176350 " className="text-purple text-2xl hover:text-gray-300">
+            <a href="https://wa.me/5592984022031" className="text-purple text-2xl hover:text-gray-300">
               <FaWhatsapp />
             </a>
           </div>

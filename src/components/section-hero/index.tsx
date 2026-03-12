@@ -42,7 +42,7 @@ export function SectionPhotos() {
 						</p>
 						<div className="mt-6 flex justify-center md:justify-start">
 							<a 
-								href="https://wa.me/+5592986176350"
+								href="https://wa.me/5592984022031"
 								target="_blank"
 								rel="noopener noreferrer"
 								className="flex items-center justify-center gap-2 bg-purple text-white w-full md:w-auto px-6 py-3 rounded-md text-lg font-bold text-center"
