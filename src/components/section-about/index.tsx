@@ -3,17 +3,17 @@ import Image from "next/image";
 export function SectionAbout() {
 	const advogados = [
 		{
-			nome: "Debora",
+			nome: "Débora Lira de Lacerda",
 			foto: '/deb.jpg',
-			sobre: "Especialista em Direito Civil com mais de 15 anos de experiência."
+			sobre: "Especialista em Direito Civil."
 		},
 		{
-			nome: "Lucy",
+			nome: "Lucimar Prata dos Santos",
 			foto: "/lucy.jpg",
-			sobre: "Atuação em Direito Trabalhista, ajudando empresas e funcionários."
+			sobre: "Advogada e cofundadora do escritório Prata, Lacerda e Videira Advogadas. Formada em Direito pela UEA, com Mestrado em Direito Internacional dos Direitos Humanos pela University of Sussex (Chevening Scholar), pós-graduação em Direitos dos Refugiados pela University of Oxford e em Direito Socioambiental e Justiça Ambiental pela University of Cambridge. Atua com atendimento humanizado em responsabilidade civil, racismo, LGBTfobia, direito do consumidor e direito de família, além de experiência em controladoria jurídica e planejamento estratégico."
 		},
 		{
-			nome: "Videira",
+			nome: "Ketlen Rayane Videira de Souza",
 			foto: "/videira.PNG",
 			sobre: "Focado em Direito Criminal, com histórico de casos de alta complexidade."
 		}
