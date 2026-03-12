@@ -80,10 +80,10 @@ const ContactSection: React.FC = () => {
             Selecione a área de atuação
           </option>
           <option value="Contencioso Cível">Contencioso Cível</option>
-          <option value="Direito Médico">Direito Médico</option>
+          <option value="Direito do Consumidor">Direito do Consumidor</option>
           <option value="Regularização de Imóveis">Regularização de Imóveis</option>
           <option value="Responsabilidade Civil">Responsabilidade Civil</option>
-          <option value="Direito Ambiental">Direito Ambiental</option>
+          <option value="Direito Previdenciário">Direito Previdenciário</option>
           <option value="Consultoria e Compliance">Consultoria e Compliance</option>
         </select>
         <textarea

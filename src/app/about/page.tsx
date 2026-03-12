@@ -11,7 +11,7 @@ export default function About() {
 				</p>
         <h2 className="text-4xl font-bold mb-6 text-black"> Prata, Lacerda & Videira Advogadas</h2>
         <p className="text-lg text-gray-600">
-          O Prata, Lacerda & Videira Advogadas é um escritório de advocacia fundado em agosto de 2022, especializado no atendimento de demandas de média e alta complexidade nas áreas do direito civil, previdenciário e ambiental. Com um compromisso com a excelência jurídica, oferece um atendimento personalizado e humanizado a nível nacional. Sua missão é defender os direitos fundamentais na Amazônia, garantindo que sejam acessíveis a todos e promovendo a justiça de forma inclusiva e eficaz.
+          O Prata, Lacerda & Videira Advogadas é um escritório de advocacia fundado em agosto de 2022, especializado no atendimento de demandas de média e alta complexidade nas áreas do direito civil, previdenciário e do consumidor. Com um compromisso com a excelência jurídica, oferece um atendimento personalizado e humanizado a nível nacional. Sua missão é defender os direitos fundamentais na Amazônia, garantindo que sejam acessíveis a todos e promovendo a justiça de forma inclusiva e eficaz.
         </p>
       </div>
       <div className='py-5'/>

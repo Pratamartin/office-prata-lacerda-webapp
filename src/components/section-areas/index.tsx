@@ -9,8 +9,8 @@ const areas = [
     details:"Contencioso cível é a resolução judicial de conflitos em questões não criminais." 
   },
   { 
-    title: "Direito Médico", 
-    details: "Direito médico regula a relação entre profissionais de saúde, pacientes e instituições, abrangendo responsabilidade civil, ética e normas da área."
+    title: "Direito do Consumidor", 
+    details: "Direito do consumidor protege os direitos dos consumidores nas relações de consumo, garantindo equilíbrio, transparência e reparação em casos de abusos."
   },
   { 
     title: "Regularização de Imóveis", 
@@ -22,8 +22,8 @@ const areas = [
 
   },
   { 
-    title: "Direito Ambiental", 
-    details: "Direito ambiental é o ramo jurídico que regula a proteção, uso e conservação do meio ambiente." 
+    title: "Direito Previdenciário", 
+    details: "Direito previdenciário trata de benefícios do INSS, aposentadorias, pensões e demais direitos ligados à seguridade social." 
   },
   {
     title: "Consultaria e Compliance",
